@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.750.0",
-    "aws-sdk": "^2.1692.0",
-    "moment": "^2.30.1"
+    "@aws-sdk/client-sts": "^3.750.0",
+    "@aws-sdk/credential-providers": "^3.750.0",
+    "moment": "^2.30.1",
+    "uuid": "^11.1.0"
   }
 }
