@@ -125,17 +125,15 @@ async function sendToUpwardQueue(patient) {
         MessageBody: JSON.stringify(patient, null, 2),
         MessageGroupId: patient.id, 
         MessageDeduplicationId: `${patient.id}-${Date.now()}-${uuidv4()}`
-    };
-
-    try {
+      };
+    
+      try {
         const response = await sqsClient.send(new SendMessageCommand(params));
-     
         return response.$metadata.httpStatusCode === 200;
-    } catch (err) {
+      } catch (err) {
         console.error("Error sending message to UpwardQueue:", err);
-     
         return false;
-    }
+      } 	
 }
 
 /**

@@ -12,3 +12,17 @@
   "policyNumber": "AFF-234-667788",
   "provider": "Liberty Mutual"
 }
+2025-02-22 11:22:25: Read message: {
+  "id": "10001",
+  "name": "John Smith"
+}
+2025-02-22 11:22:25: Posted message: {
+  "id": "10001",
+  "name": "John Smith",
+  "policyNumber": "AFF-234-667788",
+  "provider": "Liberty Mutual"
+}
+2025-02-23 12:39:17: Read message: {
+  "id": "10001",
+  "name": "John Smith"
+}
