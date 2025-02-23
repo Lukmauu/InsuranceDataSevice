@@ -7,7 +7,7 @@ import {
   DeleteMessageCommand 
 } from '@aws-sdk/client-sqs';
 import { fromIni } from "@aws-sdk/credential-providers";
-import { v4 as uuidv4 } from 'uuid';
+import { randomUUID } from 'crypto';
 import { STSClient, GetCallerIdentityCommand } from "@aws-sdk/client-sts";
 
 const sqsClient = new SQSClient({
@@ -25,14 +25,6 @@ const insuranceDatabaseFilePath = '/Users/lucasoliveira/Documents/code/cloud/Pro
  * This is a global flag to prevent overlapping processing cycles
  */  
 let isProcessing = false;
-
-/**
- * Use this function to write to the service log file.
- * Remember that you need to write to the log every time you:
- * - Read a message from the DownwardQueue
- * - Put a message in the UpwardQueue
- * (See bullet point # 4 on pages 4 and 5 of Project2.pdf)
- */
 
 /**
  * Append a log message to the log file with a timestamp.
@@ -124,7 +116,7 @@ async function sendToUpwardQueue(patient) {
         QueueUrl: upwardQueueURL,
         MessageBody: JSON.stringify(patient, null, 2),
         MessageGroupId: patient.id, 
-        MessageDeduplicationId: `${patient.id}-${Date.now()}-${uuidv4()}`
+        MessageDeduplicationId: `${patient.id}-${Date.now()}-${randomUUID()}`
       };
     
       try {
@@ -142,7 +134,7 @@ async function sendToUpwardQueue(patient) {
 async function processMessage() {
     const message = await receiveMessage();
     if (!message) {
-        console.log("No messages available.");
+        console.log("No message available...");
     
         return;
     }
@@ -180,8 +172,6 @@ async function processMessage() {
     } else {
         console.error("Error deleting message from DownwardQueue");
     }
-
-
 }
 
 /**
@@ -189,7 +179,7 @@ async function processMessage() {
  */
 async function pollQueue() {
     if (isProcessing) {
-        console.log("On process, skipping this interval...");
+        console.log("Listining...");
      
         return;
     }
@@ -207,8 +197,8 @@ async function pollQueue() {
 console.log('==>> InsuranceDataService started');
 console.log('==>> Listening to incoming messages from DownwardQueue...');
 
-// Poll every 10000 milliseconds.
-setInterval(pollQueue, 10000);
+pollQueue();
+setInterval(pollQueue, 20000);
 
 /**
  * Test authentication to AWS

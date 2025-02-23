@@ -2,27 +2,22 @@
 2025-02-17 05:14:31:  Reading from queue
 2025-02-17 05:14:34:  Reading from queue
 2025-02-17 05:14:37:  Reading from queue
-2025-02-22 10:31:16: Read message: {
-    "id": "10001",
-    "name": "John Smith"
+
+2025-02-23 02:11:59: Read message: {
+  "id": "10001",
+  "name": "John Smith"
 }
-2025-02-22 10:31:16: Posted message: {
+2025-02-23 02:11:59: Posted message: {
   "id": "10001",
   "name": "John Smith",
   "policyNumber": "AFF-234-667788",
   "provider": "Liberty Mutual"
 }
-2025-02-22 11:22:25: Read message: {
-  "id": "10001",
-  "name": "John Smith"
+2025-02-23 02:12:49: Read message: {
+  "id": "10002",
+  "name": "Sandra Summer"
 }
-2025-02-22 11:22:25: Posted message: {
-  "id": "10001",
-  "name": "John Smith",
-  "policyNumber": "AFF-234-667788",
-  "provider": "Liberty Mutual"
-}
-2025-02-23 12:39:17: Read message: {
-  "id": "10001",
-  "name": "John Smith"
+2025-02-23 02:12:49: Posted message: {
+  "id": "10002",
+  "name": "Sandra Summer"
 }
